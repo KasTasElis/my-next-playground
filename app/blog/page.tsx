@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "My Blog Index",
+  description: "Check out all my posts.",
+};
 
 const posts = ["post-one", "post-two", "post-three"];
 

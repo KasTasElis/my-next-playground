@@ -1,4 +1,10 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pokemon List",
+  description: "Check out all the Pokemon here.",
+};
 
 export default async function Pokemon() {
   const url = "https://pokeapi.co/api/v2/pokemon";

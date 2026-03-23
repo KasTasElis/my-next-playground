@@ -1,3 +1,18 @@
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ post: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const postName = (await params).post;
+
+  return {
+    title: postName,
+    description: "Can read more info here.",
+  };
+}
+
 export default async function Post(props: PageProps<"/blog/[post]">) {
   const { post } = await props.params;
 
