@@ -1,11 +1,8 @@
 import Link from "next/link";
+import { getPokemonList } from "../data";
 
 export default async function PokemonList() {
-  const url = "https://pokeapi.co/api/v2/pokemon";
-  const response = await fetch(url);
-  const { results: pokeData } = (await response.json()) as {
-    results: { name: string; url: string }[];
-  };
+  const pokeData = await getPokemonList();
 
   return (
     <ul>

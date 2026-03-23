@@ -1,13 +1,8 @@
+import { getPokemonDetails } from "../data";
+
 export default async function PokeDetails(props: PageProps<"/pokemon/[name]">) {
   const { name: pokeName } = await props.params;
-
-  const url = "https://pokeapi.co/api/v2/pokemon/" + pokeName;
-  const response = await fetch(url);
-  const pokeData = (await response.json()) as {
-    base_experience: number;
-    height: number;
-    weight: number;
-  };
+  const pokeData = await getPokemonDetails(pokeName);
 
   return (
     <div>
