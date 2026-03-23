@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getPokemonList } from "../data";
-import clsx from "clsx";
+import PokemonPagination from "./PokemonPagination";
 
 export default async function PokemonList({
   page,
@@ -26,27 +26,7 @@ export default async function PokemonList({
         ))}
       </ul>
 
-      {/* <p>COUNT: {count}</p>
-      <p>Total Pages: {totalPages}</p>
-      <p>Current Page: {page}</p> */}
-
-      <ul className="flex gap-5 max-w-[500px] flex-wrap">
-        {Array.from({ length: totalPages }).map((_, i) => (
-          <li key={i}>
-            <Link
-              className={clsx(
-                "underline hover:text-yellow-500 p-1 bg-gray-800 rounded",
-                {
-                  "text-yellow-500": Number(page) === i + 1,
-                },
-              )}
-              href={`/pokemon?page=${i + 1}`}
-            >
-              {i + 1}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <PokemonPagination totalPages={totalPages} currentPage={page ?? 1} />
     </div>
   );
 }
